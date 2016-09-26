@@ -1,0 +1,9 @@
+<div>
+<%= link_to user_followers_path @user do %>
+  <span id="followers_stat"><%= @user.followers.size %></span> followers 
+<% end %>
+<%= link_to user_following_path @user do %>
+  <%= @user.following.size %> following 
+<% end %>
+</div>
+<div id="follow_form"><%= render "follow_form" if user_signed_in? && !current_user?(@user) %></div>

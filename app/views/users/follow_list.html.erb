@@ -1,0 +1,14 @@
+<% @title = "#{@user.username} | #{@id}" %>
+<div class="container">
+  <div class="col-md-8 col-md-offset-2">
+	<h1 class="text-center"><%= link_to @user.username, @user %> | <%= @id %></h1>
+	<div class="col-md-5">
+	  <p><strong>Username:</strong> <%= @user.username %></p>
+	  <p><strong>Email:</strong> <%= @user.email %></p>
+	  <%= render "stats" %>
+	</div>
+	<div class="col-md-7">
+	  <div id="<%= @id %>"><%= render @users %></div>
+	</div>
+  <div>
+</div>

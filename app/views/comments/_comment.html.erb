@@ -1,0 +1,13 @@
+<div class="comment_list">
+  <p><strong><%= link_to comment.user.username, comment.user %></strong> <%= comment.created_at.strftime("%B %d, %Y") %></p>
+  <p><%= comment.content %></p>
+  <div class="reply_comment">
+	<%= link_to "Reply", new_comment_comment_path(comment.id, post_id: @post.id) %>
+	<% if allow_action? :comments, :edit, comment %>
+	   <%= link_to "Edit", edit_comment_path(comment.id, post_id: @post.id) %>
+	<% end %>
+	<div id="<%="voting_form_Comment_#{comment.id}" %>"><%= render "votes/voting_form", resource: comment %></div>
+  </div>
+  <%= render comment.comments %>
+</div>
+<br/>

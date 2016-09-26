@@ -1,0 +1,19 @@
+<% @title = @post.title %>
+<div class="container">
+  <h2><%= @post.title %></h2>
+  <p><%= h(@post.content).gsub(/\n/,'<br/>').html_safe %></p>
+  <p><strong>Posted by</strong> <%= link_to @post.user.username, @post.user %> <%= time_ago_in_words @post.created_at %> ago</p>
+  <p><%= pluralize @post.all_comments.size, "comment" %></p>
+  <% if allow_action? :posts, :edit, @post %>
+	<%= link_to "Edit", edit_post_path(@post), class: "btn btn-default" %>
+  <% end %>
+  <% if allow_action? :posts, :delete %>
+	<%= link_to "Delete", post_path(@post), method: :delete, data: { confirm: "Are you sure?"}, class: "btn btn-default" %>
+  <% end %>
+  
+  <div id="<%= "voting_form_Post_#{@post.id}" %>"><%= render "votes/voting_form", resource: @post %></div>
+  <div id="comment_list">
+    <%= render "comments/form" %>
+    <%= render @post.comments %>
+  </div>
+</div>

@@ -1,0 +1,5 @@
+<%= form_for [@comment.commentable || @post, @comment], html: {class: "comment_form"} do |f| %>
+  <%= hidden_field_tag :post_id, params[:post_id] %>
+  <%= f.text_area :content, rows: 3 %><br/>
+  <%= f.submit "Reply", class: "btn btn-primary" %>
+<% end %>

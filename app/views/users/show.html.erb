@@ -1,0 +1,13 @@
+<% @title = @user.username %>
+<div class="container">
+  <h1 class="text-center">Information</h1>
+  <div class="col-md-2">
+	<p><strong>Username:</strong> <%= @user.username %></p>
+	<p><strong>Email:</strong> <%= @user.email %></p>
+	<%= render "stats" %>
+  </div>
+  <div class="col-md-10">
+	<div id="user_posts"><%= render @user_posts %></div>
+	<div class="pagination_field"><%= will_paginate @user_posts %></div>
+  <div>
+</div>

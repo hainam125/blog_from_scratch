@@ -1,0 +1,1 @@
+$("#" + "<%= "voting_form_#{@votable.class.name}_#{@votable.id}" %>").html("<%= j(render('votes/voting_form', resource: @votable)) %>");

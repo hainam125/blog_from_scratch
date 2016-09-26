@@ -1,0 +1,6 @@
+<% vote_button_for_resource(resource) do |method, css_class, path, direction, number| %>
+  <%= link_to path, method: method, class: css_class, remote: true, data: { disable_with: "..." } do %>
+    <strong><%= number %></strong>
+    <span class="<%="glyphicon glyphicon-chevron-#{direction}"%>"></span>
+  <% end %>
+<% end %>
