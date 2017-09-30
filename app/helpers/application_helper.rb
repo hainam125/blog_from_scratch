@@ -33,7 +33,7 @@ module ApplicationHelper
 	session.delete(:user_id)
 	@current_user = nil
   end
-  
+
   def store_location
 	session[:return_to] = request.original_url
   end
@@ -42,7 +42,7 @@ module ApplicationHelper
 	redirect_to(session[:return_to]||default)
 	session.delete(:return_to)
   end
-  
+
   def vote_button_for_resource(resource)
 	user = current_user
 	if user

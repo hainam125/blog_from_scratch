@@ -1,9 +1,9 @@
 class User < ActiveRecord::Base
   attr_accessor :remember_token
   before_create :downcase_email
-  
+
   has_secure_password
-  
+
   has_many :authoring_posts, class_name: "Post", dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :votes, dependent: :destroy
@@ -13,12 +13,12 @@ class User < ActiveRecord::Base
   has_many :following, through: :active_relationships, source: :followed
   has_many :passive_relationships, class_name: "Relationship", foreign_key: :followed_id, dependent: :destroy
   has_many :followers, through: :passive_relationships
-  
+
   EMAIL_REGEX = /\A[\w\-._]+@[a-z\d\-_]+(\.[a-z\d])*\.[a-z\d]+/i
   validates :username, presence: true, length: { minimum: 4, maximum: 50 }, uniqueness: true
   validates :email, presence: true, uniqueness: true, format: { with: EMAIL_REGEX }
   validates :password, length: { minimum: 6, maximum: 30 }
-  
+
   def User.digest(token)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
 	BCrypt::Password.create(token, cost: cost)
@@ -33,17 +33,17 @@ class User < ActiveRecord::Base
   def forget
 	update_attribute(:remember_digest, nil)
   end
-  
+
   def authenticate?(attribute, token)
 	digest = send("#{attribute}_digest")
 	return false if digest.nil?
 	BCrypt::Password.new(digest).is_password?(token)
   end
-  
+
   def vote_this?(resource)
 	self.voting_comments.include?(resource) || self.voting_posts.include?(resource)
   end
-  
+
   def follow_this(other)
 	self.active_relationships.create(followed_id: other.id)
   end
@@ -53,8 +53,8 @@ class User < ActiveRecord::Base
   def follow_this?(other)
 	self.following.include?(other)
   end
-  
-  
+
+
   private
 	def downcase_email
 	  self.email = email.downcase
