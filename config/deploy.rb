@@ -2,7 +2,7 @@
 lock '3.4.1'
 
 set :application, 'blog_from_scratch'
-set :repo_url, 'git@example.com:hainam125/blog_from_scratch.git'
+set :repo_url, 'git@github.com:hainam125/blog_from_scratch.git'
 
 set :deploy_to, '/var/www/blog_from_scratch'
 set :deploy_user, 'namnh'
