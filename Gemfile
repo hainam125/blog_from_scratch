@@ -15,6 +15,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'will_paginate',           '3.1.0'
 
+gem 'unicorn', '~> 4.8.0'
+
 group :development, :test do
   gem 'rack-mini-profiler'
   gem 'sqlite3'
@@ -22,6 +24,10 @@ group :development, :test do
 end
 group :development do
   gem 'web-console', '~> 2.0'
+  gem 'capistrano', '~> 3.2.1'
+  gem 'capistrano-rails', '~> 1.1.1'
+  gem 'capistrano-bundler', '~> 1.1.2'
+  gem 'capistrano-rbenv', '~> 2.0.2'
 end
 group :production do
   gem 'pg', '0.18.4'
