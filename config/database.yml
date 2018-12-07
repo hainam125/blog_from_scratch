@@ -1,5 +1,5 @@
 default: &default
-  adapter: postgres
+  adapter: postgresql
   encoding: unicode
   host: localhost
   pool: 5
@@ -13,5 +13,5 @@ staging:
 production:
   <<: *default
   database: phindee
-  username: namnh
+  username: jenkins
   password: 123123
