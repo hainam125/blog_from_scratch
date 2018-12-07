@@ -10,6 +10,11 @@ development:
 staging:
   <<: *default
   database: blog_from_scratch_development
+test:
+  <<: *default
+  database: phindee
+  username: jenkins
+  password: 123123
 production:
   <<: *default
   database: phindee
